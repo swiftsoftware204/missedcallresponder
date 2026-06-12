@@ -1,10 +1,25 @@
 import { type ReactNode } from 'react'
 import { cn } from '@shared/utils'
 
-interface CardProps { children: ReactNode; className?: string; padding?: 'none' | 'sm' | 'md' | 'lg' }
-export function Card({ children, className, padding = 'md' }: CardProps) {
+interface CardProps { children: ReactNode; className?: string; padding?: 'none' | 'sm' | 'md' | 'lg'; onClick?: () => void }
+export function Card({ children, className, padding = 'md', onClick }: CardProps) {
   const p = { none: '', sm: 'p-3', md: 'p-5', lg: 'p-6' }
-  return <div className={cn('bg-white rounded-xl border border-slate-200 shadow-sm', p[padding], className)}>{children}</div>
+  return <div onClick={onClick} className={cn('bg-white rounded-xl border border-slate-200 shadow-sm', p[padding], className)}>{children}</div>
+}
+
+interface CardHeaderProps { children: ReactNode; className?: string }
+export function CardHeader({ children, className }: CardHeaderProps) {
+  return <div className={cn('flex flex-col space-y-1.5', className)}>{children}</div>
+}
+
+interface CardTitleProps { children: ReactNode; className?: string }
+export function CardTitle({ children, className }: CardTitleProps) {
+  return <h3 className={cn('font-semibold leading-none tracking-tight', className)}>{children}</h3>
+}
+
+interface CardContentProps { children: ReactNode; className?: string }
+export function CardContent({ children, className }: CardContentProps) {
+  return <div className={cn('', className)}>{children}</div>
 }
 
 interface StatCardProps {

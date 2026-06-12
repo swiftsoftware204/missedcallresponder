@@ -1,6 +1,7 @@
 import { type ReactNode, useState, useRef, useEffect } from 'react'
 import { cn } from '@shared/utils'
 export { Modal, ConfirmModal } from './Modal'
+export { Card, CardHeader, CardTitle, CardContent, StatCard } from './Card'
 
 interface BadgeProps {
   children: ReactNode; variant?: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'purple'
